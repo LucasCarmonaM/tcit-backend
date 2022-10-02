@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+
+  psql-db:
+    image: postgres:12.1-alpine
+    ports:
+      - 5431:5432
+    environment:
+      - POSTGRES_USER=backend
+      - POSTGRES_PASSWORD=backendpass
+      - POSTGRES_DB=tcit_test

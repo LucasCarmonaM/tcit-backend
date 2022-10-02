@@ -1,0 +1,7 @@
+DB:
+  DB_HOST: "localhost"
+  DB_USER: "backend"
+  DB_PORT: "5431"
+  DB_PASS: "backendpass"
+  DB_DATABASE: "tcit_test"
+  DB_SYNC: true
