@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+  api:
+    container_name: tcit-api-dev
+    build:
+      context: '.'
+      dockerfile: 'DockerFile.dev'
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=development
+    ports:
+      - '3001:3001'
+    restart: always
+
+  db:
+    container_name: db
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=backend
+      - POSTGRES_PASSWORD=backendpass
+      - POSTGRES_DB=tcit_api_dev

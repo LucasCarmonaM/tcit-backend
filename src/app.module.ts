@@ -2,9 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './modules/auth/auth.module';
-import { UserModule } from './modules/user/user.module';
 import * as config from 'config';
+import { PostModule } from './modules/post/post.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -17,8 +16,7 @@ import * as config from 'config';
       autoLoadEntities: true,
       synchronize: config.get('DB.DB_SYNC'),
     }),
-    AuthModule,
-    UserModule,
+    PostModule,
   ],
   controllers: [AppController],
   providers: [AppService],

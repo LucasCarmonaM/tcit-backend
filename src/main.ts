@@ -2,7 +2,7 @@ import { UnprocessableEntityException, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationError } from 'class-validator';
-import { TypeORMExceptionFilter } from 'common/catch/type-orm-exceptions';
+import { TypeORMExceptionFilter } from 'src/common/catch/type-orm-exceptions';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -15,6 +15,12 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
   app.useGlobalFilters(new TypeORMExceptionFilter());
+  app.enableCors();
+  app.enableCors({
+    origin: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
@@ -25,6 +31,6 @@ async function bootstrap() {
       },
     }),
   );
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();

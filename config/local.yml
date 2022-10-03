@@ -1,8 +1,8 @@
-ENV: 'test'
+ENV: 'local'
 DB:
   DB_HOST: "localhost"
   DB_USER: "backend"
-  DB_PORT: "5431"
+  DB_PORT: "5432"
   DB_PASS: "backendpass"
-  DB_NAME: "tcit_test"
+  DB_NAME: "tcit_api_dev"
   DB_SYNC: true
